@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -22,7 +23,7 @@ export class UserComponent implements OnInit {
     this.name = 'Jane';
     this.title = 'Developer';
     this.address = {
-      street : 'Church St.',
+      street : 'Carlton St.',
       city : 'Toronto',
       province: 'ON'
     }
@@ -39,6 +40,15 @@ export class UserComponent implements OnInit {
     else{
       this.showSkills = false;
     }
+  }
+
+  addSkill(newSkill){
+    console.log(newSkill);
+    this.skills.push(newSkill);
+  }
+
+  deleteSkill(ind){
+    this.skills.splice(ind, 1)
   }
 
 }
