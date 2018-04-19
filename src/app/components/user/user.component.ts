@@ -7,13 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  name = 'Jane';
-  title = 'Developer';
-  address = {street : 'Eglinton St.', city : 'Toronto', province : 'ON'}
+  name;
+  title;
+  address : {street, 
+    city, 
+    province
+  }
 
-  constructor() { }
+  constructor() { 
+    console.log("In constructor");
+  }
 
   ngOnInit() {
+    console.log("In ngOnInit");
+    this.name = 'Jane';
+    this.title = 'Developer';
+    this.address = {
+      street : 'Church St.',
+      city : 'Toronto',
+      province: 'ON'
+    }
   }
 
 }
