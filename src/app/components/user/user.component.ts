@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../services/data.service';
 
 
 @Component({
@@ -13,8 +14,9 @@ export class UserComponent implements OnInit {
   address : Address;
   skills : string[];
   showSkills: boolean;
+  albums: Album[];
 
-  constructor() { 
+  constructor(private dataService:DataService) { 
     console.log("In constructor");
   }
 
@@ -30,6 +32,11 @@ export class UserComponent implements OnInit {
 
     this.skills = ['C++', 'JavaScript', 'Angular']
     this.showSkills = false;
+
+    this.dataService.getAlbums().subscribe(albums => {
+      console.log(albums)
+      this.albums = albums;
+    })
 
   }
   toggleSkills(){
@@ -57,4 +64,10 @@ interface Address {
   street : String,
   city : String,
   province : String
+}
+
+interface Album{
+  id: number;
+  title: string;
+  userId: number;
 }

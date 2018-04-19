@@ -2,53 +2,53 @@
 <p>Title: {{title}}</p>
 <p>Address: {{address.street}}, {{address.city}}, {{address.province}}</p>
 
-<button (click) = "toggleSkills()"> {{showSkills ? "Hide Skills" : "Show Skills"}} </button>
+<button (click)="toggleSkills()"> {{showSkills ? "Hide Skills" : "Show Skills"}} </button>
 <div *ngIf="showSkills">
-
-    <h3>Skills: </h3>
-
-    <ul>
-
-        <li *ngFor="let skill of skills; let ind = index "> {{skill}}
-            <button (click) = "deleteSkill(int)">X</button>
-        </li>
-
-    </ul>
-
+  <h3>Skills: </h3>
+  <ul>
+    <li *ngFor="let skill of skills; let ind = index"> 
+      {{skill}} 
+      <button (click)="deleteSkill(ind)">X</button>
+    </li>
+  </ul>
+  
+  <form (submit)="addSkill(mySkill.value)">
+    <label>Add skill: </label>
+    <input type="text" #mySkill /> <br/>
+  </form>
 </div>
 
-<h3>
-    <form>
-        <div>
-            <label>Name:</label>
-            <input type = "text" name = "name" [(ngModel)] = "name" />
-        </div>
-        
-        <div>
-            <label>Title:</label>
-            <input type = "text" name = "title" [(ngModel)] = "title" />
-        </div>
+<h3>Edit User</h3>
+<form>
+  <div>
+    <label>Name: </label>
+    <input type="text" name="name" [(ngModel)]="name" /> 
+  </div>
 
-        <div>
-                <label>street:</label>
-                <input type = "text" name = "address.street" [(ngModel)] = "address.street" />
-        </div>
+  <div>
+    <label>Title: </label>
+    <input type="text" name="title" [(ngModel)]="title" /> 
+  </div>
 
+  <div>
+    <label>Street: </label>
+    <input type="text" name="address.street" [(ngModel)]="address.street" />
+  </div>
 
-        <div>
-                <label>Street:</label>
-                <input type = "text" name = "address.city" [(ngModel)] = "address.city" />
-        </div>
-        <div>
-                <label>Province:</label>
-                <input type = "text" name = "address.province" 
-                    [(ngModel)] = "address.province" />
-        </div>
-    </form>
+  <div>
+    <label>City: </label>
+    <input type="text" name="address.city" [(ngModel)]="address.city" />
+  </div>
+  
+  <div>
+    <label>Province: </label>
+    <input type="text" name="address.province" [(ngModel)]="address.province" />
+  </div>
+</form>
 
-    <form (submit) = "addSkill(mySkill.value)">
-        <label>Add skill: </label>
-        <input type = "text" #mySkill /><br/>
-    </form>
-
-</h3>
+<h3>Albums</h3>
+ <div *ngFor="let album of albums">
+  <h4>Title: {{album.title}} </h4>
+  <p>Album Id: {{album.id}}</p>
+  <p>User Id: {{album.userId}}</p>
+</div>
