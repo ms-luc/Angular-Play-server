@@ -7,12 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  name;
-  title;
-  address : {street, 
-    city, 
-    province
-  }
+  name : String;
+  title: String;
+  address : Address;
+  skills : string[];
+  showSkills: boolean;
 
   constructor() { 
     console.log("In constructor");
@@ -27,6 +26,25 @@ export class UserComponent implements OnInit {
       city : 'Toronto',
       province: 'ON'
     }
+
+    this.skills = ['C++', 'JavaScript', 'Angular']
+    this.showSkills = false;
+
+  }
+  toggleSkills(){
+    console.log("show skills")
+    if(this.showSkills ==false){
+      this.showSkills = true;
+    }
+    else{
+      this.showSkills = false;
+    }
   }
 
+}
+
+interface Address {
+  street : String,
+  city : String,
+  province : String
 }
